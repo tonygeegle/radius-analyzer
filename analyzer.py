@@ -5,8 +5,6 @@ import fileinput
 import csv
 import simplejson as json
 
-result = {}
-lineDic = {}
 logFiles = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.log']
 #print(logFiles)
 with fileinput.input(files=(logFiles)) as f:
@@ -30,4 +28,4 @@ with open('result.csv', 'w', newline='') as csvfile:
 	spamwriter = csv.writer(csvfile, delimiter=',')
 	for item in result.items():
 		spamwriter.writerow(item)
-print("结果已经保存到 result.txt , 共写入了", len(result), "行数据!")
+print("结果已经保存到 result.csv , 共写入了", len(result), "行数据!")
