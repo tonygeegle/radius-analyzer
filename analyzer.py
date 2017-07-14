@@ -28,7 +28,6 @@ with fileinput.input(files=(logFiles)) as f:
 		per_count += 1
 		if per_count % 10000 == 0:
 			print("已经扫描了", per_count, "行.")
-			break
 print("共扫描了", len(logFiles), "个文件.", sum, "行数据. 扫描完毕!")
 
 with open('result.csv', 'w', newline='') as csvfile:
