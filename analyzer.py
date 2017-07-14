@@ -5,7 +5,7 @@ import fileinput
 import csv
 import simplejson as json
 
-logFiles = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.log']
+logFiles = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.txt']
 #print(logFiles)
 with fileinput.input(files=(logFiles)) as f:
 	sum = 0
