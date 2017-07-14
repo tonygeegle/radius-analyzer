@@ -3,6 +3,7 @@
 import os
 import fileinput
 import csv
+import datetime
 
 class UserInfo(object):
 	def __init__(self, code, count):
@@ -28,10 +29,13 @@ with fileinput.input(files=(logFiles)) as f:
 		per_count += 1
 		if per_count % 10000 == 0:
 			print("已经扫描了", per_count, "行.")
+			break
 print("共扫描了", len(logFiles), "个文件.", sum, "行数据. 扫描完毕!")
 
-with open('result.csv', 'w', newline='') as csvfile:
+now = datetime.datetime.now()
+result_file = "result_" + now.strftime('%Y_%m_%d_%H_%M_%S') + ".csv"
+with open(result_file, 'w', newline='') as csvfile:
 	spamwriter = csv.writer(csvfile, delimiter=',')
 	for v in result.values():
 		spamwriter.writerow(v.getInfo())
-print("结果已经保存到 result.csv , 共写入了", len(result), "行数据!")
+print("结果已经保存到,", result_file,  ". 共写入了", len(result), "行数据!")
