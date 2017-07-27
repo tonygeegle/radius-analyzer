@@ -13,7 +13,7 @@ class UserInfo(object):
 		return self.code, self.count
 
 result = {}
-logFiles = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1]=='.txt']
+logFiles = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.getsize(x) > 0 and os.path.splitext(x)[1]=='.txt']
 #print(logFiles)
 with fileinput.input(files=(logFiles)) as f:
 	sum = 0
@@ -29,7 +29,6 @@ with fileinput.input(files=(logFiles)) as f:
 		per_count += 1
 		if per_count % 10000 == 0:
 			print("已经扫描了", per_count, "行.")
-			break
 print("共扫描了", len(logFiles), "个文件.", sum, "行数据. 扫描完毕!")
 
 now = datetime.datetime.now()
