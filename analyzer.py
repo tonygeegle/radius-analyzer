@@ -15,7 +15,7 @@ class UserInfo(object):
 result = {}
 logFiles = [x for x in os.listdir('.') if os.path.isfile(x) and os.path.getsize(x) > 0 and os.path.splitext(x)[1]=='.txt']
 #print(logFiles)
-with fileinput.input(files=(logFiles)) as f:
+with fileinput.input(files=logFiles) as f:
 	sum = 0
 	for line in f:
 		lineDic = eval(line[1:-2])
